@@ -1,5 +1,6 @@
 # docker-aws-cdk
-setup portable / non-polluting  execution enviornment for aws cdk projects
+setup portable / non-polluting  execution enviornment for aws cdk projects STRICTLY for DEV purposes.
+The issue we are trying to solve here is to have a docker container have all the correct node packages and config in order to execute AWS cdk commands
 
 ## Steps
 Edit the included Dockerfile file as required (versions etc)
@@ -9,9 +10,20 @@ Edit the included Dockerfile file as required (versions etc)
 docker build -t <name> .  e.g docker build -t randhawp/cdk:v1 .
 ```
 ## run the docker image
+This is a DinD config, docker in docker, as docker is required by the cdk deploy command to make the image
 ```
-docker run --priviliged -it -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk:v1 /bin/bash   (you can change the folders later at exec time)
+docker run --priviliged -it -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk:v1 dockerd   (you can change the folders later at exec time)
 ```
+
+## security access to aws
+certain cdk actions like bootstrap . deploy etc require access to IAM with cli access permissions
+IF docker IS NOT being saved the credential files can be copied across from host to docker 
+These can be added to Dockerfile but it better be a manual action
+```
+docker cp  config 472b18e6143f:/root/.aws/config (not requried, causes issues, do not copy)
+docker cp  credentials 472b18e6143f:/root/.aws/credentials
+```
+If config is not provided then it will be executed in the default region us-east-1
 ## find the container id
 ```
 docker ps
@@ -22,18 +34,11 @@ go to the dir where the cdk project is to be built and run
 docker exec -w /home/puneet/projects/cdk/hello-cdk <running cdk docker container id> cdk init app --language typescript  (-w does the trick of changing to empty folder for cdk init)
 ```
 
-## security access to aws
-certain cdk actions like bootstrap . deploy etc require access to IAM with cli access permissions
-IF docker IS NOT being saved the credential files can be copied across from host to docker 
-```
-docker cp  config 472b18e6143f:/root/.aws/config (not requried, causes issues, do not copy)
-docker cp  credentials 472b18e6143f:/root/.aws/credentials
-```
-If config is not provided then it will be executed in the default region us-east-1
 
 ## example command and output of bootstrap without config 
 ```
-uneet@puneet-TensorBook-2022:~/.aws$ docker exec -w /home/puneet/projects/cdk/hello-cdk 472b cdk bootstrap --region us-east-2 
+docker exec -w /home/puneet/projects/cdk/hello-cdk 472b cdk bootstrap --region us-east-2 
+
  ⏳  Bootstrapping environment aws://<accountid>/us-east-1...
 Using default execution policy of 'arn:aws:iam::aws:policy/AdministratorAccess'. Pass '--cloudformation-execution-policies' to customize.
 Trusted accounts for deployment: (none)
