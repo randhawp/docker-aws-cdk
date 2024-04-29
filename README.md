@@ -14,20 +14,21 @@ This is a DinD config, docker in docker, as docker is required by the cdk deploy
 ```
 docker run --priviliged -it -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk:v1 dockerd   (you can change the folders later at exec time)
 ```
+## find the container id
+```
+docker ps
+```
 
 ## security access to aws
 certain cdk actions like bootstrap . deploy etc require access to IAM with cli access permissions
 IF docker IS NOT being saved the credential files can be copied across from host to docker 
 These can be added to Dockerfile but it better be a manual action
 ```
-docker cp  config 472b18e6143f:/root/.aws/config (not requried, causes issues, do not copy)
-docker cp  credentials 472b18e6143f:/root/.aws/credentials
+docker cp  config <containerid>:/root/.aws/config (not requried, causes issues, do not copy)
+docker cp  credentials <containerid>:/root/.aws/credentials
 ```
 If config is not provided then it will be executed in the default region us-east-1
-## find the container id
-```
-docker ps
-```
+
 ## creating a cdk project
 go to the dir where the cdk project is to be built and run
 ```
