@@ -90,7 +90,46 @@ CDKToolkit | 12/12 | 8:50:48 PM | CREATE_COMPLETE      | AWS::CloudFormation::St
 ```
 docker exec -w /home/puneet/projects/cdk/hello-cdk <id of the randhawp/cdk docker> cdk deploy --require-approval never
 
+```
+### ouput
+
+```
+lap-01:~/projects/cdk/hello-cdk$ docker exec -w /home/puneet/projects/cdk/hello-cdk c2046b0c0c9f  cdk  deploy --require-approval never
+
+✨  Synthesis time: 2s
+
+HelloCdkStack: deploying... [1/1]
+HelloCdkStack: creating CloudFormation changeset...
+HelloCdkStack | 0/6 | 9:19:28 PM | REVIEW_IN_PROGRESS   | AWS::CloudFormation::Stack | HelloCdkStack User Initiated
+HelloCdkStack | 0/6 | 9:19:34 PM | CREATE_IN_PROGRESS   | AWS::CloudFormation::Stack | HelloCdkStack User Initiated
+HelloCdkStack | 0/6 | 9:19:36 PM | CREATE_IN_PROGRESS   | AWS::CDK::Metadata      | CDKMetadata/Default (CDKMetadata) 
+HelloCdkStack | 0/6 | 9:19:36 PM | CREATE_IN_PROGRESS   | AWS::IAM::Role          | DockerFunc/ServiceRole (DockerFuncServiceRole8031C1C5) 
+HelloCdkStack | 0/6 | 9:19:37 PM | CREATE_IN_PROGRESS   | AWS::IAM::Role          | DockerFunc/ServiceRole (DockerFuncServiceRole8031C1C5) Resource creation Initiated
+HelloCdkStack | 0/6 | 9:19:37 PM | CREATE_IN_PROGRESS   | AWS::CDK::Metadata      | CDKMetadata/Default (CDKMetadata) Resource creation Initiated
+HelloCdkStack | 1/6 | 9:19:37 PM | CREATE_COMPLETE      | AWS::CDK::Metadata      | CDKMetadata/Default (CDKMetadata) 
+HelloCdkStack | 2/6 | 9:19:53 PM | CREATE_COMPLETE      | AWS::IAM::Role          | DockerFunc/ServiceRole (DockerFuncServiceRole8031C1C5) 
+HelloCdkStack | 2/6 | 9:19:54 PM | CREATE_IN_PROGRESS   | AWS::Lambda::Function   | DockerFunc (DockerFuncF47DA747) 
+HelloCdkStack | 2/6 | 9:19:55 PM | CREATE_IN_PROGRESS   | AWS::Lambda::Function   | DockerFunc (DockerFuncF47DA747) Resource creation Initiated
+HelloCdkStack | 2/6 | 9:19:56 PM | CREATE_IN_PROGRESS   | AWS::Lambda::Function   | DockerFunc (DockerFuncF47DA747) Eventual consistency check initiated
+HelloCdkStack | 2/6 | 9:19:56 PM | CREATE_IN_PROGRESS   | AWS::Lambda::Permission | DockerFunc/invoke-function-url (DockerFuncinvokefunctionurlB084CBAE) 
+HelloCdkStack | 2/6 | 9:19:56 PM | CREATE_IN_PROGRESS   | AWS::Lambda::Url        | DockerFunc/FunctionUrl (DockerFuncFunctionUrlFE69B12B) 
+HelloCdkStack | 2/6 | 9:19:57 PM | CREATE_IN_PROGRESS   | AWS::Lambda::Permission | DockerFunc/invoke-function-url (DockerFuncinvokefunctionurlB084CBAE) Resource creation Initiated
+HelloCdkStack | 2/6 | 9:19:57 PM | CREATE_IN_PROGRESS   | AWS::Lambda::Url        | DockerFunc/FunctionUrl (DockerFuncFunctionUrlFE69B12B) Resource creation Initiated
+HelloCdkStack | 3/6 | 9:19:57 PM | CREATE_COMPLETE      | AWS::Lambda::Permission | DockerFunc/invoke-function-url (DockerFuncinvokefunctionurlB084CBAE) 
+HelloCdkStack | 4/6 | 9:19:57 PM | CREATE_COMPLETE      | AWS::Lambda::Url        | DockerFunc/FunctionUrl (DockerFuncFunctionUrlFE69B12B) 
+arn:aws:cloudformation:us-east-2:901844595673:stack/HelloCdkStack/294ebd10-066e-11ef-8765-0a67550feeaf
+HelloCdkStack | 5/6 | 9:20:12 PM | CREATE_COMPLETE      | AWS::Lambda::Function   | DockerFunc (DockerFuncF47DA747) 
+HelloCdkStack | 6/6 | 9:20:13 PM | CREATE_COMPLETE      | AWS::CloudFormation::Stack | HelloCdkStack 
+
+ ✅  HelloCdkStack
+
+✨  Deployment time: 48.31s
+
+Outputs:
+HelloCdkStack.FunctionUrlValue = https://odzgtiuj7ckbyeasupkya6ke2q0trudb.lambda-url.us-east-2.on.aws/
+Stack ARN:
+
+✨  Total time: 50.31s
 
 
 ```
-
