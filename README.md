@@ -129,6 +129,9 @@ Outputs:
 HelloCdkStack.FunctionUrlValue = https://odzgtiuj7ckbyeasupkya6ke2q0trudb.lambda-url.us-east-2.on.aws/
 Stack ARN:
 
+## making changes etc
+After making changes to the cdk app e.g the docker container holding the app , just call the cdk deploy command again and it will build the docker image and publish it to the lambda / ecr
+
 ✨  Total time: 50.31s
 
 
