@@ -6,11 +6,11 @@ Edit the included Dockerfile file as required (versions etc)
 
 ## build
 ```
-docker build -t <name> .  e.g docker build -t randhawp/cdk:v1
+docker build -t <name> .  e.g docker build -t randhawp/cdk:v1 .
 ```
 ## run the docker image
 ```
-docker run -it -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk:v1 /bin/bash   (you can change the folders later at exec time)
+docker run --priviliged -it -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk:v1 /bin/bash   (you can change the folders later at exec time)
 ```
 ## find the container id
 ```
@@ -32,7 +32,7 @@ docker cp  credentials 472b18e6143f:/root/.aws/credentials
 If config is not provided then it will be executed in the default region us-east-1
 
 ## example command and output of bootstrap without config 
-'''
+```
 uneet@puneet-TensorBook-2022:~/.aws$ docker exec -w /home/puneet/projects/cdk/hello-cdk 472b cdk bootstrap --region us-east-2 
  ⏳  Bootstrapping environment aws://<accountid>/us-east-1...
 Using default execution policy of 'arn:aws:iam::aws:policy/AdministratorAccess'. Pass '--cloudformation-execution-policies' to customize.
@@ -78,5 +78,13 @@ CDKToolkit | 11/12 | 8:50:46 PM | CREATE_COMPLETE      | AWS::IAM::Role         
 CDKToolkit | 12/12 | 8:50:48 PM | CREATE_COMPLETE      | AWS::CloudFormation::Stack | CDKToolkit 
  ✅  Environment aws://<accoutid>/us-east-1 bootstrapped.
 
-'''
-cdk deploy not working as docker is not in the container ?
+```
+## deploy the code
+
+```
+docker exec -w /home/puneet/projects/cdk/hello-cdk <id of the randhawp/cdk docker> cdk deploy --require-approval never
+
+
+
+```
+
