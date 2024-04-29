@@ -1,4 +1,8 @@
-FROM node:18
+# First stage: node base image
+FROM node:18 as node 
+
+# Install Docker
+RUN curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
 
 # Install AWS CDK
 RUN npm install -g aws-cdk
