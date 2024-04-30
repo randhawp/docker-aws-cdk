@@ -7,12 +7,12 @@ Edit the included Dockerfile file as required (versions etc)
 
 ## build
 ```
-docker build -t <name> .  e.g docker build -t randhawp/cdk:v1 .
+docker build -t <name> .  e.g docker build -t randhawp/cdk .
 ```
 ## run the docker image
 This is a DinD config, docker in docker, as docker is required by the cdk deploy command to make the image
 ```
-docker run --priviliged -it -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk:v1 dockerd   (you can change the folders later at exec time)
+docker run -it --privileged  -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk  dockerd  
 ```
 ## find the container id
 ```
