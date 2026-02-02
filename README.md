@@ -34,8 +34,10 @@ If config is not provided then it will be executed in the default region us-east
 
 ## creating a cdk project
 go to the dir where the cdk project is to be built and run
+first create the project directlory e.g hello-cdk-1 and then give a full path to it with the container id of the DinD AWS docker
 ```
 docker exec -w /home/puneet/projects/cdk/hello-cdk <running cdk docker container id> cdk init app --language typescript  (-w does the trick of changing to empty folder for cdk init)
+docker exec -w  /home/puneet/projects/cdk/hello-cdk-1 003dfea83fb5 cdk init app --language typescript  
 ```
 
 
