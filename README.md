@@ -24,8 +24,11 @@ certain cdk actions like bootstrap . deploy etc require access to IAM with cli a
 IF docker IS NOT being saved the credential files can be copied across from host to docker 
 These can be added to Dockerfile but it better be a manual action
 ```
-docker cp  config <containerid>:/root/.aws/config 
-docker cp  credentials <containerid>:/root/.aws/credentials
+puneet@x-01:~/projects/cdk$ docker cp  /home/puneet/.aws/config 003dfea83fb5:/root/ 
+Successfully copied 2.05kB to 003dfea83fb5:/root/
+puneet@x-01:~/projects/cdk$ docker cp  /home/puneet/.aws/credentials 003dfea83fb5:/root/ 
+Successfully copied 2.05kB to 003dfea83fb5:/root/
+
 ```
 If config is not provided then it will be executed in the default region us-east-1
 
