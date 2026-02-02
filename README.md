@@ -94,7 +94,7 @@ CDKToolkit | 12/12 | 8:50:48 PM | CREATE_COMPLETE      | AWS::CloudFormation::St
 
 ```
 docker exec -w /home/puneet/projects/cdk/hello-cdk <id of the randhawp/cdk docker> cdk deploy --require-approval never
-
+docker exec -w /home/puneet/projects/cdk/hello-cdk-1 7a728cbef35a  cdk deploy --require-approval never
 ```
 ### ouput
 
