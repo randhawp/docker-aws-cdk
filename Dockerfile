@@ -1,5 +1,5 @@
 # First stage: node base image
-FROM node:18 as node 
+FROM node:22 as node 
 
 # Install Docker
 RUN curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
