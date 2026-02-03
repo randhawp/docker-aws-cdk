@@ -25,9 +25,9 @@ certain cdk actions like bootstrap . deploy etc require access to IAM with cli a
 IF docker IS NOT being saved the credential files can be copied across from host to docker 
 These can be added to Dockerfile but it better be a manual action
 ```
-puneet@x-01:~/projects/cdk$ docker cp  /home/puneet/.aws/config 003dfea83fb5:/root/ 
+puneet@x-01:~/projects/cdk$ docker cp  /home/puneet/.aws/config 003dfea83fb5:/root/.aws/ 
 Successfully copied 2.05kB to 003dfea83fb5:/root/
-puneet@x-01:~/projects/cdk$ docker cp  /home/puneet/.aws/credentials 003dfea83fb5:/root/ 
+puneet@x-01:~/projects/cdk$ docker cp  /home/puneet/.aws/credentials 003dfea83fb5:/root/.aws/ 
 Successfully copied 2.05kB to 003dfea83fb5:/root/
 
 ```
