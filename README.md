@@ -11,6 +11,7 @@ docker build -t <name> .  e.g docker build -t randhawp/cdk .
 ```
 ## run the docker image
 This is a DinD config, docker in docker, as docker is required by the cdk deploy command to make the image
+Run the following command in the randhawp/cdk
 ```
 docker run -it --privileged  -v ~/projects:/home/puneet/projects/ -p 3000:3000 randhawp/cdk  dockerd  
 ```
@@ -140,4 +141,6 @@ After making changes to the cdk app e.g the docker container holding the app , j
 ✨  Total time: 50.31s
 
 
-```
+`-----------------------------
+The execution of the above code creates a S3 folder and a cloud formation stack. These should never be manually edited or deleted.
+If they are then clean up / delete everything ans start afresh.
