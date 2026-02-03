@@ -144,3 +144,13 @@ After making changes to the cdk app e.g the docker container holding the app , j
 `-----------------------------
 The execution of the above code creates a S3 folder and a cloud formation stack. These should never be manually edited or deleted.
 If they are then clean up / delete everything ans start afresh.
+
+
+# DinD has some difficult issues with overlay files, when those come up DinD does not work
+
+To overcome overlay errors when deploying follow the steps
+a) Run the docker container that has CDK installed ie randhap/cdk and run it as follows:
+b) docker run -it   -v /var/run/docker.sock:/var/run/docker.sock   -v ~/projects:/home/puneet/projects   -v /home/puneet/.aws:/root/.aws randhawp/cdk /bin/bash
+c) go into the docker container and change path to the project i.e cd /home/puneet/projects/cdk/hello-cdk-1
+d) here just call the deploy i.e > cdk deploy --requre-approval never
+
